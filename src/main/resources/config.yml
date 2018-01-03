@@ -1,5 +1,5 @@
 kumuluzee:
-  name: upravljanjeProfilov
+  name: upravljanjeSkupin
   env:
     name: dev
   version: 1.0.0
