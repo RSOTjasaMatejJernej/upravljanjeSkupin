@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: upravljanje-service
+  name: upravljanjestrani-service
 spec:
   type: NodePort
   ports:
   - port: 8080
     protocol: TCP
     targetPort: 8080
+    nodePort: 32228
   selector:
     app: upravljanjeSkupin
