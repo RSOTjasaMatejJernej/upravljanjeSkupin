@@ -47,29 +47,16 @@ public class UpravljanjeSkupinResources {
     @GET
     public Response getAllSkupinas() {
         return Response.ok("test").build();
-        /*try {
-            WebTarget wt = httpClient.target(baseUrl + "/v1/katalogProfilov/");
-            Invocation.Builder b = wt.request();
-            List<Skupina> resp = b.get(new GenericType<Skupina>(){});
-            Skupina response = b.get(new GenericType<Skupina>() {
-            });
-            System.out.println("response je: " + response.toString());
 
-            return Response.ok(response).build();
-        }
-        catch (Exception e) {
-            //log.error(e);
-            throw e;
-        }*/
     }
 
     @GET
     @Path("{skupinaId}")
-    public Skupina getCustomer(@PathParam("skupinaId") String profilId) {
-        log.debug(baseUrl + "/v1/katalogSkupin?" + profilId);
+    public Skupina getCustomer(@PathParam("skupinaId") String skupinaId) {
+        log.debug(baseUrl + "/v1/katalogSkupin?" + skupinaId);
 
        try {
-           WebTarget wt = httpClient.target(baseUrl + "/v1/katalogSkupin/" + profilId);
+           WebTarget wt = httpClient.target(baseUrl + "/v1/katalogSkupin/" + skupinaId);
            Invocation.Builder b = wt.request();
            Skupina response = b.get(new GenericType<Skupina>() {
            });
@@ -81,7 +68,7 @@ public class UpravljanjeSkupinResources {
             throw e;
         }}/*
         try {
-            String response = sendGet(profilId);
+            String response = sendGet(skupinaId);
 
             return Response.ok(response).build();
         } catch (Exception e) {
@@ -124,20 +111,7 @@ public class UpravljanjeSkupinResources {
 
     }
 
-    /*@GET
-    public Response getAllProfils() {
-        List<Skupina> profils = Database.getSkupinas();
-        return Response.ok(profils).build();
-    }
 
-    @GET
-    @Path("{profilId}")
-    public Response getProfil(@PathParam("profilId") String profilId) {
-        Skupina profil = Database.getProfil(profilId);
-        return profil != null
-                ? Response.ok(profil).build()
-                : Response.status(Response.Status.NOT_FOUND).build();
-    }*/
 
     @POST
     public Response addNewSkupina(Skupina skupina) {
